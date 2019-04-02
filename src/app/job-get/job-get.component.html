@@ -1,0 +1,31 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <td></td>
+      <td class="encabezado">Nombre</td>
+      <td class="encabezado d-none d-lg-block">End Point</td>
+      <td class="encabezado">Minutos</td>
+      <td class="encabezado d-none d-lg-block">Ultima ejecucion</td>
+      <td></td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let job of jobs">
+      <td class="columna">
+        <button [routerLink]="['edit', job._id]" class="btn btn-primary btn-sm">
+          <span class="oi oi-pencil"></span>
+        </button>
+      </td>
+      <td class="columna">{{ job.nombre }}</td>
+      <td class="columna d-none d-lg-block">{{ job.end_point }}</td>
+      <td class="columna">{{ job.minutos }}</td>
+      <td class="columna d-none d-lg-block">{{ job.ultima_ejecucion | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+      <td class="columna">
+        <button (click) = "deleteJob(job._id)" class="btn btn-danger btn-sm">
+          <span class="oi oi-minus"></span>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

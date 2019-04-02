@@ -1,0 +1,50 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="jobForm" novalidate>
+
+      <div class="form-group">
+        <label class="col-md-4">Nombre</label>
+        <input type="text" class="form-control" formControlName="job_nombre"
+          #job_nombre />
+      </div>
+      <div *ngIf="jobForm.controls['job_nombre'].invalid &&
+        (jobForm.controls['job_nombre'].dirty ||
+        jobForm.controls['job_nombre'].touched)" class="alert alert-danger">
+        <div *ngIf="jobForm.controls['job_nombre'].errors.required">
+          El nombre del job es requerido
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4">End Point</label>
+        <input type="text" class="form-control" formControlName="job_endPoint"
+          #job_endPoint />
+      </div>
+      <div *ngIf="jobForm.controls['job_endPoint'].invalid &&
+        (jobForm.controls['job_endPoint'].dirty ||
+        jobForm.controls['job_endPoint'].touched)" class="alert alert-danger">
+        <div *ngIf="jobForm.controls['job_endPoint'].errors.required">
+          El end point del job es requerido
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4">Minutos</label>
+        <input type="number" class="form-control" formControlName="job_minutos"
+          #job_minutos />
+      </div>
+      <div *ngIf="jobForm.controls['job_minutos'].invalid &&
+        (jobForm.controls['job_minutos'].dirty ||
+        jobForm.controls['job_minutos'].touched)" class="alert alert-danger">
+        <div *ngIf="jobForm.controls['job_minutos'].errors.required">
+          Los minutos de repetición del job son requeridos
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button (click)="updateJob(job_nombre.value, job_endPoint.value, job_minutos.value)"
+          [disabled]="jobForm.pristine || jobForm.invalid" class="btn btn-primary">Edit Job</button>
+      </div>
+    </form>
+  </div>
+</div>
